@@ -2,7 +2,7 @@
 
 namespace Dcodegroup\LaravelConfiguration;
 
-use Dcodegroup\LaravelXeroOauth\Commands\InstallCommand;
+use Dcodegroup\LaravelConfiguration\Commands\InstallCommand;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
