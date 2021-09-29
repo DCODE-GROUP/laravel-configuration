@@ -40,7 +40,10 @@ class Configuration extends Model
     protected static function booted()
     {
         static::creating(function ($configuration) {
-            $configuration->key = Str::slug($configuration->name, '_');
+
+            if (empty($configuration->key)) {
+                $configuration->key = Str::slug($configuration->name, '_');
+            }
         });
     }
 
