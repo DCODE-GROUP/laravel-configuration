@@ -26,7 +26,7 @@ class InstallCommand extends Command
      */
     public function handle()
     {
-        if (! Schema::hasTable('configurations') && class_exists('CreateConfigurationTable')) {
+        if (! Schema::hasTable('configurations') && !class_exists('CreateConfigurationTable')) {
             $this->comment('Publishing Laravel Configurations Migrations');
             $this->callSilent('vendor:publish', ['--tag' => 'laravel-configurations-migrations']);
         }
