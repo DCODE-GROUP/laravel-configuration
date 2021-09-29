@@ -2,8 +2,10 @@
 
 namespace Dcodegroup\LaravelConfiguration\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Support\Str;
 
 class Configuration extends Model
 {
@@ -30,8 +32,25 @@ class Configuration extends Model
         'value' => 'array',
     ];
 
+    /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::creating(function ($configuration) {
+            $configuration->key = Str::slug($configuration->name, '_');
+        });
+    }
+
     public function configurable(): MorphTo
     {
         return $this->morphTo();
+    }
+
+    public function scopeByKey(Builder $query, string $key): Builder
+    {
+        return $query->where('key', $key);
     }
 }
