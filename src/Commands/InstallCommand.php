@@ -31,6 +31,6 @@ class InstallCommand extends Command
             $this->callSilent('vendor:publish', ['--tag' => 'laravel-configurations-migrations']);
         }
 
-        $this->info('Laravel Xero scaffolding installed successfully.');
+        $this->info('Laravel Configuration scaffolding installed successfully.');
     }
 }
