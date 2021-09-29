@@ -49,8 +49,13 @@ class Configuration extends Model
         return $this->morphTo();
     }
 
-    public function scopeByKey(Builder $query, string $key): Builder
+    public function scopeByKey(Builder $query, string $value): Builder
     {
-        return $query->where('key', $key);
+        return $query->where('key', $value);
+    }
+
+    public function scopeByGroup(Builder $query, string $value): Builder
+    {
+        return $query->where('group', $value);
     }
 }
