@@ -43,12 +43,15 @@ class LaravelConfigurationServiceProvider extends ServiceProvider
      */
     protected function offerPublishing()
     {
-        if ($this->app->environment('local') && ! Schema::hasTable('configurations') && ! class_exists('CreateConfigurationsTable')) {
-            $timestamp = date('Y_m_d_His', time());
+        if ($this->app->environment('local')) {
+            if (! Schema::hasTable('configurations') && ! class_exists('CreateConfigurationsTable'))
+            {
+                $timestamp = date('Y_m_d_His', time());
 
-            $this->publishes([
-                __DIR__.'/../database/migrations/create_configurations_table.stub.php' => database_path('migrations/'.$timestamp.'_create_configurations_table.php'),
-            ], 'laravel-configurations-migrations');
+                $this->publishes([
+                    __DIR__.'/../database/migrations/create_configurations_table.stub.php' => database_path('migrations/'.$timestamp.'_create_configurations_table.php'),
+                ], 'laravel-configurations-migrations');
+            }
         }
     }
 }
