@@ -44,8 +44,7 @@ class LaravelConfigurationServiceProvider extends ServiceProvider
     protected function offerPublishing()
     {
         if ($this->app->environment('local')) {
-            if (! Schema::hasTable('configurations') && ! class_exists('CreateConfigurationsTable'))
-            {
+            if (! Schema::hasTable('configurations') && ! class_exists('CreateConfigurationsTable')) {
                 $timestamp = date('Y_m_d_His', time());
 
                 $this->publishes([
