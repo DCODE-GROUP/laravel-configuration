@@ -13,7 +13,7 @@ composer require dcodegroup/laravel-configuration
 Then run the install command.
 
 ```bash
-php artsian laravel-configuration:install
+php artisan laravel-configuration:install
 ```
 
 This will publish the migration file.
@@ -21,7 +21,7 @@ This will publish the migration file.
 Run the migrations
 
 ```bash
-php artsian migrate
+php artisan migrate
 ```
 
 ## Usage
